@@ -8,7 +8,7 @@ public class UserNotFoundException extends RuntimeException {
 
 	public UserNotFoundException(String message) {
 		super(message);
-		System.out.println("Hello Exception");
+		System.out.println("Hello Exception"+message);
 		
 	}
 

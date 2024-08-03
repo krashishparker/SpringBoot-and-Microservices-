@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.ResponseEntity.BodyBuilder;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 public class UserResource {
+	
 	
 	private UserDaoService service;
 	
@@ -34,7 +36,7 @@ public class UserResource {
 		User user=service.findUser(id);
 		
 		if(user==null)
-		 throw new UserNotFoundException("id not found is: "+ id);
+		 throw new UserNotFoundException("id not found is: "+ id+"");
 		
 		
 		return user;
@@ -54,6 +56,12 @@ public class UserResource {
 				return ResponseEntity.created(location).build();
 				
 		 
+	}
+    
+    @DeleteMapping("/users/{id}")
+    public void deleteUsers(@PathVariable int id){
+		service.deleteUser(id);
+	
 	}
     
     
